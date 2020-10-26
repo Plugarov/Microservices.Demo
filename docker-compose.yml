@@ -1,0 +1,46 @@
+version: '3'
+services:
+ sqlserver:
+  container_name: sqlserver
+  image: mcr.microsoft.com/mssql/server:2017-latest
+  environment: 
+   ACCEPT_EULA: "Y"
+   SA_PASSWORD: "!Aa123456"
+  ports: 
+   - "1433:1433"
+ rabbitmq:
+  image: rabbitmq:3-management
+  container_name: rabbitmq
+  ports:
+   - "15672:15672"
+   - "5672:5672"
+  environment:
+   - RABBITMQ_DEFAULT_USER=guest
+   - RABBITMQ_DEFAULT_PASS=guest      
+ customermanagementapi:
+  container_name: customermanagementapi
+  image: mat/customermanagementapi
+  build:
+   context: .
+   dockerfile: CustomerManagementAPI/Dockerfile
+  depends_on:
+   - rabbitmq
+   - sqlserver
+  ports:
+    - "4000"
+  environment:
+   - ASPNETCORE_ENVIRONMENT=Development   
+ webapp:
+  image: mat/webapp
+  build:
+   context: .
+   dockerfile: WebApp/Dockerfile
+  ports:
+    - "5000:5000" 
+  environment:
+   - ASPNETCORE_ENVIRONMENT=Development    
+ notificationservice:
+  image: mat/notificationservice
+  build:
+   context: .
+   dockerfile: NotificationService/Dockerfile        

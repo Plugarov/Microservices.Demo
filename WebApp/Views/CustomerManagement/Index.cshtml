@@ -1,0 +1,11 @@
+﻿@model WebApp.ViewModels.CustomerManagementViewModel
+@{
+    ViewData["Title"] = "Customers Overview";
+}
+
+<p>helloa</p>
+
+@foreach (var x in Model.Customers)
+{<li>@x.City</li>}
+
+<a id="RegisterCustomerButton" asp-action="New" asp-controller="CustomerManagement" class="btn btn-default">Register customer</a>
