@@ -33,6 +33,19 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(string id)
+        {
+            return await _resiliencyHelper.ExecuteResilient(async () =>
+            {
+                var model = new CustomerManagementDetailsViewModel
+                {
+                    Customer = await _customerManagementAPI.GetCustomerById(id)
+                };
+                return View(model);
+            }, View("Offline", new CustomerManagementOfflineViewModel()));
+        }
+
+        [HttpGet]
         public IActionResult New()
         {
             var model = new CustomerManagementNewViewModel

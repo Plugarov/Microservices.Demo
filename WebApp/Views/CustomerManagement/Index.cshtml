@@ -3,9 +3,28 @@
     ViewData["Title"] = "Customers Overview";
 }
 
-<p>helloa</p>
+<h3 id="PageTitle">Customer Management - overview</h3>
 
-@foreach (var x in Model.Customers)
-{<li>@x.City</li>}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Emailaddress</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "CustomerManagement", new { id = customer.CustomerId }))'">
+                <td>@customer.Name</td>
+                <td>@customer.Address</td>
+                <td>@customer.City</td>
+                <td>@customer.EmailAddress</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 <a id="RegisterCustomerButton" asp-action="New" asp-controller="CustomerManagement" class="btn btn-default">Register customer</a>

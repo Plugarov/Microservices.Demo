@@ -29,7 +29,7 @@ services:
   ports:
     - "4000"
   environment:
-   - ASPNETCORE_ENVIRONMENT=Development   
+   - ASPNETCORE_ENVIRONMENT=Production   
  webapp:
   image: mat/webapp
   build:
@@ -38,7 +38,7 @@ services:
   ports:
     - "5000:5000" 
   environment:
-   - ASPNETCORE_ENVIRONMENT=Development    
+   - ASPNETCORE_ENVIRONMENT=Production    
  notificationservice:
   image: mat/notificationservice
   build:

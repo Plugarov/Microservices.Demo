@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManagementAPI", "CustomerManagementAPI\CustomerManagementAPI.csproj", "{FA0ED169-7B5E-4AF5-9EC9-DB41A0AD5EEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagementAPI", "CustomerManagementAPI\CustomerManagementAPI.csproj", "{FA0ED169-7B5E-4AF5-9EC9-DB41A0AD5EEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Messaging", "Infrastructure.Messaging\Infrastructure.Messaging.csproj", "{C0DBFC4D-907F-4D4F-B70D-CE7043963998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Messaging", "Infrastructure.Messaging\Infrastructure.Messaging.csproj", "{C0DBFC4D-907F-4D4F-B70D-CE7043963998}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{CE35868F-1A09-44C7-8966-E7963F325463}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "NotificationService\NotificationService.csproj", "{1E4BDF12-4D33-442D-B0EB-55FB19313134}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleManagementAPI", "VehicleManagementAPI\VehicleManagementAPI.csproj", "{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1E4BDF12-4D33-442D-B0EB-55FB19313134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E4BDF12-4D33-442D-B0EB-55FB19313134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E4BDF12-4D33-442D-B0EB-55FB19313134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

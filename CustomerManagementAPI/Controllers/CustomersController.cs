@@ -37,8 +37,6 @@ namespace CustomerManagementAPI.Controllers
         {
             var customers = await _dbContext.Customers.ToListAsync();
 
-
-
             return customers.Select(x => new Customer
             {
                 CustomerId = x.CustomerId,
