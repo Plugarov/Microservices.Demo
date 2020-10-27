@@ -29,7 +29,20 @@ services:
   ports:
     - "4000"
   environment:
-   - ASPNETCORE_ENVIRONMENT=Production   
+   - ASPNETCORE_ENVIRONMENT=Production
+ vehiclemanagementapi:
+  container_name: vehiclemanagementapi
+  image: mat/vehiclemanagementapi
+  build:
+   context: .
+   dockerfile: VehicleManagementAPI/Dockerfile
+  depends_on:
+   - rabbitmq
+   - sqlserver
+  ports:
+   - "4100"
+  environment:
+  - ASPNETCORE_ENVIRONMENT=Production      
  webapp:
   image: mat/webapp
   build:

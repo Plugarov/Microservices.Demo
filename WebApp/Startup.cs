@@ -27,6 +27,7 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<ICustomerManagementAPI, CustomerManagementAPI>();
+            services.AddHttpClient<IVehicleManagementAPI, VehicleManagementAPI>();
 
             services.AddControllersWithViews();
         }
@@ -46,8 +47,6 @@ namespace WebApp
 
             app.UseRouting();
 
-            SetupAutoMapper();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -55,18 +54,6 @@ namespace WebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-        }
-
-
-        private void SetupAutoMapper()
-        {
-            // setup automapper
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Customer, RegisterCustomer>()
-                    .ForCtorParam("messageId", opt => opt.MapFrom(c => Guid.NewGuid()))
-                    .ForCtorParam("customerId", opt => opt.MapFrom(c => Guid.NewGuid()));
             });
         }
     }

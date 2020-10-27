@@ -17,5 +17,13 @@ namespace WebApp.Mappers
             source.Customer.TelephoneNumber,
             source.Customer.EmailAddress
         );
+
+        public static RegisterVehicle MapToRegisterVehicle(this VehicleManagementNewViewModel source) => new RegisterVehicle(
+            Guid.NewGuid(),
+            source.Vehicle.LicenseNumber,
+            source.Vehicle.Brand,
+            source.Vehicle.Type,
+            source.SelectedCustomerId
+        );
     }
 }
