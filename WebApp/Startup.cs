@@ -28,6 +28,7 @@ namespace WebApp
         {
             services.AddHttpClient<ICustomerManagementAPI, CustomerManagementAPI>();
             services.AddHttpClient<IVehicleManagementAPI, VehicleManagementAPI>();
+            services.AddHttpClient<IWorkshopManagementAPI, WorkshopManagementAPI>();
 
             services.AddControllersWithViews();
         }

@@ -225,7 +225,7 @@ namespace WorkshopManagementAPI.Repositories
         /// <param name="eventData">The event-data JSON to deserialize.</param>
         private Event DeserializeEventData(string messageType, string eventData)
         {
-            Type eventType = Type.GetType($"Pitstop.WorkshopManagementAPI.Events.{messageType}");
+            Type eventType = Type.GetType($"WorkshopManagementAPI.Events.{messageType}");
             JObject obj = JsonConvert.DeserializeObject<JObject>(eventData, _serializerSettings);
             return obj.ToObject(eventType) as Event;
         }
