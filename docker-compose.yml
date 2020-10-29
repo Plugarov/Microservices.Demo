@@ -42,7 +42,20 @@ services:
   ports:
    - "4100"
   environment:
-  - ASPNETCORE_ENVIRONMENT=Production      
+  - ASPNETCORE_ENVIRONMENT=Production
+ workshopmanagementapi:
+  container_name: workshopmanagementapi
+  image: mat/workshopmanagementapi     
+  build:
+   context: .
+   dockerfile: WorkshopManagementAPI/Dockerfile
+  depends_on:
+   - rabbitmq
+   - sqlserver
+  ports:
+   - "4200" 
+  environment: 
+   - ASPNETCORE_ENVIRONMENT=Production     
  webapp:
   image: mat/webapp
   build:
@@ -56,4 +69,9 @@ services:
   image: mat/notificationservice
   build:
    context: .
-   dockerfile: NotificationService/Dockerfile        
+   dockerfile: NotificationService/Dockerfile
+ workshopmanagementeventhandler:
+  image: mat/workshopmanagementeventhandler
+  build:
+   context: .
+   dockerfile: WorkshopManagementEventHandler/Dockerfile

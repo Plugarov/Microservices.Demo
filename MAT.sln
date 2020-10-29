@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "Noti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleManagementAPI", "VehicleManagementAPI\VehicleManagementAPI.csproj", "{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkshopManagementAPI", "WorkshopManagementAPI\WorkshopManagementAPI.csproj", "{30B1EEE8-C937-47A4-A916-E49DAB1F9A8F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkshopManagementEventHandler", "WorkshopManagementEventHandler\WorkshopManagementEventHandler.csproj", "{F9DA5E8B-9CC0-4C61-80A2-F0A1788BCA05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31482C18-9BBB-429D-B8A2-0EB14B65D8AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B1EEE8-C937-47A4-A916-E49DAB1F9A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B1EEE8-C937-47A4-A916-E49DAB1F9A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B1EEE8-C937-47A4-A916-E49DAB1F9A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B1EEE8-C937-47A4-A916-E49DAB1F9A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9DA5E8B-9CC0-4C61-80A2-F0A1788BCA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9DA5E8B-9CC0-4C61-80A2-F0A1788BCA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9DA5E8B-9CC0-4C61-80A2-F0A1788BCA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9DA5E8B-9CC0-4C61-80A2-F0A1788BCA05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

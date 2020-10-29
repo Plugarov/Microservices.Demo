@@ -72,6 +72,7 @@ namespace Infrastructure.Messaging
                 .Execute(() =>
                 {
                     var factory = new ConnectionFactory() { UserName = _username, Password = _password, DispatchConsumersAsync = true, Port = _port };
+                    
                     _connection = factory.CreateConnection(_hosts);
                     _model = _connection.CreateModel();
                     _model.ExchangeDeclare(_exchange, "fanout", durable: true, autoDelete: false);
