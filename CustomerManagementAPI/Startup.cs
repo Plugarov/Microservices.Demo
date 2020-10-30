@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace CustomerManagementAPI
 {
@@ -39,6 +40,11 @@ namespace CustomerManagementAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(_configuration)
+                .Enrich.WithMachineName()
+                .CreateLogger();
 
             app.UseRouting();
 

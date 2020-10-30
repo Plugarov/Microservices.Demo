@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Polly;
+using Serilog;
 using System;
 using VehicleManagementAPI.Controllers.Model;
 
@@ -22,9 +23,11 @@ namespace VehicleManagementAPI.DataAccess
 
         public void MigrateDB()
         {
+            Log.Information("Ensure VehicleManagement Database");
+
             Policy
                 .Handle<Exception>()
-                .WaitAndRetry(10, r => TimeSpan.FromSeconds(10))
+                .WaitAndRetry(10, r => TimeSpan.FromSeconds(10), (ex, ts) => { Log.Error("Error applying migrations. Retrying in 10 sec."); })
                 .Execute(() => Database.Migrate());
         }
     }

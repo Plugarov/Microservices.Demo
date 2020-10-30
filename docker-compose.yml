@@ -75,3 +75,10 @@ services:
   build:
    context: .
    dockerfile: WorkshopManagementEventHandler/Dockerfile
+ logserver:
+  image: datalust/seq:latest
+  container_name: logserver
+  ports:
+    - "5341:80"
+  environment:
+    - ACCEPT_EULA=Y

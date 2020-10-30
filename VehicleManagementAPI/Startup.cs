@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using VehicleManagementAPI.DataAccess;
+using Serilog;
 
 namespace VehicleManagementAPI
 {
@@ -42,6 +43,11 @@ namespace VehicleManagementAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(_configuration)
+                .Enrich.WithMachineName()
+                .CreateLogger();
 
             app.UseRouting();
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using WebApp.Commands;
 using WebApp.Models;
 using WebApp.RESTClients;
@@ -44,6 +45,12 @@ namespace WebApp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .Enrich.WithMachineName()
+                .CreateLogger();
+
             app.UseStaticFiles();
 
             app.UseRouting();

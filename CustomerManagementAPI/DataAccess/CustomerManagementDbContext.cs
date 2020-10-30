@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Polly;
 using System;
+using Serilog;
 
 namespace CustomerManagementAPI.DataAccess
 {
@@ -22,9 +23,11 @@ namespace CustomerManagementAPI.DataAccess
 
         public void MigrateDB()
         {
+            Log.Information("Ensure CustomerManagement Database");
+
             Policy
                 .Handle<Exception>()
-                .WaitAndRetry(10, r => TimeSpan.FromSeconds(10))
+                .WaitAndRetry(10, r => TimeSpan.FromSeconds(10), (ex, ts) => { Log.Error("Error applying migrations. Retrying in 10 sec."); })
                 .Execute(() =>  Database.Migrate());
         }
     }
