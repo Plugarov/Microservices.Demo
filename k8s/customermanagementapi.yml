@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels: 
+    app: customermanagementapi
+    version: "1.0"  
+  name: customermanagementapi
+  namespace: mat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customermanagementapi
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: customermanagementapi
+        version: "1.0"
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: mat/customermanagementapi
+        name: customermanagementapi
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 4000
+      restartPolicy: Always  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: customermanagementapi
+  name: customermanagementapi
+  namespace: mat
+spec:
+  type: NodePort
+  ports:
+  - name: "http-4000"
+    port: 4000
+    targetPort: 4000
+    nodePort: 30005
+  selector:
+    app: customermanagementapi
+    version: "1.0" 

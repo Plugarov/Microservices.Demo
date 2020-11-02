@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels: 
+    app: workshopmanagementapi
+    version: "1.0"  
+  name: workshopmanagementapi
+  namespace: mat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workshopmanagementapi
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: workshopmanagementapi
+        version: "1.0"
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: mat/workshopmanagementapi
+        name: workshopmanagementapi
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 4200
+      restartPolicy: Always  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: workshopmanagementapi
+  name: workshopmanagementapi
+  namespace: mat
+spec:
+  type: NodePort
+  ports:
+  - name: "http-4200"
+    port: 4200
+    targetPort: 4200
+    nodePort: 30003
+  selector:
+    app: workshopmanagementapi
+    version: "1.0" 

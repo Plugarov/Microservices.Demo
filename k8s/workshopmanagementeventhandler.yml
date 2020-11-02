@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels: 
+    app: workshopmanagementeventhandler
+    version: "1.0"  
+  name: workshopmanagementeventhandler
+  namespace: mat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workshopmanagementeventhandler
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: workshopmanagementeventhandler
+        version: "1.0"
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: mat/workshopmanagementeventhandler
+        name: workshopmanagementeventhandler
+        imagePullPolicy: Never
+      restartPolicy: Always  

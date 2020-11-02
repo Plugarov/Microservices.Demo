@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels: 
+    app: vehiclemanagementapi
+    version: "1.0"  
+  name: vehiclemanagementapi
+  namespace: mat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vehiclemanagementapi
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: vehiclemanagementapi
+        version: "1.0"
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        image: mat/vehiclemanagementapi
+        name: vehiclemanagementapi
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 4100
+      restartPolicy: Always  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vehiclemanagementapi
+  name: vehiclemanagementapi
+  namespace: mat
+spec:
+  type: NodePort
+  ports:
+  - name: "http-4100"
+    port: 4100
+    targetPort: 4100
+    nodePort: 30004
+  selector:
+    app: vehiclemanagementapi
+    version: "1.0" 
